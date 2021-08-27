@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+{% block style %}
+    .product-title,  .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px; }
+{% endblock %}
+{% block content %}
+    <div class="container bg bg-white">
+    <div class="container-fliud">
+    <div class="wrapper row">
+    <div class="preview col-6">
+
+        <div class="preview-pic tab-content">
+            <div class="tab-pane active  my-auto mx-auto" id="pic-1">
+                <img src="{{ book.img.url }}" height="500" width="400"/>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="details col-6">
+        <h1>Title: {{ book.title }}</h1><hr>
+        <p><strong>Author: </strong>{{ book.author }}</p>
+        <p><strong>Summary: </strong> {{ book.summary }}</p>
+        <p><strong>Language: </strong> {{ book.language }}</p>
+        <p><strong>Type: </strong>{{book.type1}}</p>
+
+        <div style="margin-top:30px">
+            <!-- <h4>Copies</h4> -->
+            {% if request.user.is_authenticated %}
+                <a class="btn btn-success" href="{% url 'bookupdate' id=book.id %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'bookdelete' id=book.id %}" style="margin-left: 20px;">Delete</a>
+
+
+            {% endif %}
+       
+        </div>
+
+    </div>
+    </div>
+    </div>
+</div>
+
+{%endblock%}

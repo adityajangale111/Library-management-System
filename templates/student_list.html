@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block content %}
+    <div class="bg bg-white">
+        <h4>Roll No.</h4><br>
+        {% for s in students %}
+            <ul>
+                <h5><li><a href="{% url 'studentdetail' pk=s.id %}">{{ s.roll_no }}</a></li></h5>
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock %}

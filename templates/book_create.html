@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{%block content%}
+
+    {% comment %} {%if messages%}
+
+      {%for message in messages%}
+      <p {%if message.tags%} class="alert alert-{{message.tags}} mb-5" {%endif%}>{{message}}</p>
+      {%endfor%}
+
+    {%endif%} {% endcomment %}
+
+<div class="bg bg-white form-group mx-auto my-auto">
+    <form method="post" class="form" enctype="multipart/form-data">
+        {%load crispy_forms_tags%}
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="file" name="myfile">
+        <button type="submit">Upload</button>
+        <br>
+        <br>
+    </form>
+</div>
+
+{%endblock%}
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'home.html' %}
+{% block style %}
+    .product-title,  .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px; }
+{% endblock %}
+{% block content %}
+    <div class="container bg bg-white">
+
+    <div class="container-fliud">
+    <div class="wrapper row">
+        <div class="preview col-6">
+
+            <div class="preview-pic tab-content">
+                <div class="tab-pane active  my-auto mx-auto" id="pic-1"><img
+                        src="{{ student.img.url }}" height="300" width="300"/>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="details col-6">
+            <h3>Name: {{ student.name }}</h3>
+
+            <p><strong>Id: </strong>{{ student.roll_no }}</p>
+            <p><strong>Contact: </strong> {{ student.phone_no }}</p>
+            <p><strong>Email: </strong> {{ student.email }}</p>
+
+        <div style="margin-top:30px">
+        
+            {% if request.user.is_authenticated %}
+            <!-- <p><strong>Books due:</strong> {{ student.total_books_due }}</p> -->
+                <a class="btn btn-success" href="{% url 'studentupdate' id=student.id %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'studentdelete' id=student.id %}" style="margin-left: 20px;">DELETE</a>
+            {% endif %}
+
+        </div> 
+        
+        </div>
+        <hr>
+    </div>
+
+{% endblock %}

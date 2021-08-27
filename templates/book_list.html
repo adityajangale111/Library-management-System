@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+
+{% block content %}
+{%if messages%}
+
+      {%for message in messages%}
+      <p {%if message.tags%} class="alert alert-{{message.tags}} mb-5" {%endif%}>{{message}}</p>
+      {%endfor%}
+
+    {%endif%}
+{% for detail in detail_list %}
+            <div class="card bg-dark text-primary mx-auto" style="width: 18rem;">
+              {% comment %} <img class="card-img-top" src="{{i.img_1.url}}" alt="Card image cap"> {% endcomment %}
+                <div class="card-body">
+                  <h1 class="card-title">{{ detail.Title }}</h1>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ detail.Type }}</h6>
+                  <p>Author:{{ detail.Author }}</p>
+                  <p>Language:{{ detail.Language }}</p>                  
+                  <p>Summary:{{ detail.Summary }}</p>
+                  <p>Total Copies:{{ detail.Total_copies }}</p>
+                  <p>Available Copies:{{ detail.Available_copies }}</p>
+                  
+                  <a href="{%url 'bookupdate' detail.id%}" class="card-link btn btn-primary">Update</a>
+                  <a href="{%url 'bookdelete' detail.id%}" class="card-link btn btn-danger">Delete</a>
+                </div>
+              </div>
+              <br>
+{% endfor %}
+{% endblock %}
+</body>
+</html>
+
